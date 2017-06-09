@@ -1,0 +1,94 @@
+
+
+Thứ nhất : Thủy push( đẩy) code lên 
+Xong ..Tại đây thì bản trên server là bản mới nhất...
+
+Thứ 2 : Nga pull( kéo) code về...
+Xong . 
+SẼ đẩy code lên : 
+... Tại thời điểm này thì code trên server sẽ là mới nhất
+Do đó Thủy sẽ phải pull( kéo ) về 1 lần nữa
+..
+Đến đây thì 2 project ở 2 máy mới giống nhau
+
+
+I - Git
+1. Push existed project to Git.
+https://help.github.com/articles/adding-an-existing-project-to-github-using-the-command-line/
+2. chuyển thư mục - nhánh (branch): >>> git checkout <tên branch>>
+Tạo branch: git checkout -b ten_branch
+Chuyển branch: git checkout ten_branch
+Xem các file đã thay đổi thế nào: git status
+Xem branch hiện tại: git branch
+Chuyển tên branch: git branch –m ten_branch_moi
+Xóa branch: git branch –D ten_branch
+Xóa branch ở bitbucket: git push origin --delete branch_name
+Add file & commit:
+B1:
+          git checkout ten_branch cần làm và modify source code
+B2:     git pull origin ten_branch  lấy code mới nhất từ server trong trường hợp có nhiều người làm cùng một branch
+B3: Add file
+Add từng file:         git add file_full_path
+Tất cả file:             git add -A
+Add new & modify file:     git add .
+Add new & modify file      git add –u
+B4: commit file
+git commit –m “message”
+B5: đẩy code lên server
+git push origin ten_branch
+# tao pull request vào staging khi bi conflic branch tpl
+1. git checkout tpl
+2. git branch -m tpl_backup
+3. git checkout staging
+4. git pull origin staging
+5. git checkout -b tpl
+6. git merge tpl_backup
+7. fix conflic on code
+8. git add, commit
+9. git push origin tpl --force
+2. clone vào : Bitbucket -> vào repostory đó và get clone ở Title Overiview chọn SSH
+
+3. git clone _repo_Path  
+ -- Nếu(máy mới cài) ko có SSH key thì phải tạo SSH key trước  trong thư mục :
+ C:users/tên_máy/.ssh/id_rsa.pub
+ lấy đoạn mã SSH key đó ra ( dùng lệnh cat trong command line ) rồi paste vào bitbucket - settings tìm phần SSH key 
+ 
+ - vào thư mục cần pull code về, trong cmdagõ git clone (mã git_clone_SSH)
+ 
+ Sau khi chạy xong thì thu mục kéo code về sẽ có source và thao tác cụ thể..
+ 
+ NV1  : nganq tạo branch và push code lên 
+ ...  câu lệnh tạo 1 branch mới ...
+ git checkout -b feature/nganq
+ checkout sang branch staging / feature/nganq
+  
+  git add *  -->> push tất cả các file
+  git commit -m "nga nq init code"
+  git push orign feature/nganq 
+  
+  
+  
+  ... vào slack check xem đã có ai commit chưa
+  
+  checkout xong rồi sẽ pull code về máy...
+  
+  
+  
+  
+  FIXX CONFLICT
+  b1 git brach -m tenbrach moi
+git checkout stagging
+git pull origin stagging
+git check out -b tên_branch_bị confilt 
+git merge tên_branch-backup
+0-- sửa ... 
+xong
+
+
+git add ....
+git commit -m "ab"
+
+git push origin tên-BRANCH_mới(tene đang đứng)  --force
+  
+ NV2 : sẽ clone source từ staging push từ NV1
+   và thứ tự các bước tương tự như đối với NV1
